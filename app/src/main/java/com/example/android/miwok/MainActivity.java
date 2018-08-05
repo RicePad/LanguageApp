@@ -20,6 +20,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,32 +30,22 @@ public class MainActivity extends AppCompatActivity {
 
         // Set the content of the activity to use the activity_main.xml layout file
         setContentView(R.layout.activity_main);
-    }
 
-    public void openNumberList(View view){
-        Intent i = new Intent(this, NumbersActivity.class);
-        startActivity(i);
-    }
+        // Find the View that shows the numbers category
+        TextView numbers = (TextView) findViewById(R.id.numbers);
 
-    public void openFamilyList(View view){
-        Intent i = new Intent(this, FamilyAcitivity.class);
-        startActivity(i);
+        // Set a click listener on that View
+        numbers.setOnClickListener(new View.OnClickListener() {
 
-    }
-
-    public void openColorList(View view){
-        Intent i = new Intent(this, ColorsActivity.class);
-        startActivity(i);
+            // The code in this method will be executed when the numbers View is clicked on.
+            @Override
+            public void onClick(View view) {
+                Intent numbersIntent = new Intent(MainActivity.this, NumbersActivity.class);
+                startActivity(numbersIntent);
+            }
+        });
 
     }
-
-    public void openPhrasesList(View view){
-        Intent i = new Intent(this, PhrasesActivity.class);
-        startActivity(i);
-
-    }
-
-
 
 
 }
